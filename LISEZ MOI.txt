@@ -1,0 +1,31 @@
+Pour faire travailler le projet: (Il est preferrable d'utiliser MAMP comme pour garantir meme resultat)
+
+1. Executer les script `db/sql/etud3a.sql` et `db/sql/admin.sql`
+2. Si vous utilisez XAMPP, il est preferrable de copier les fichiers directement
+sous htdocs/, au lieu de htdocs/management-concours ou htdocs/gestion-concours.
+C'est pour garantir les assets et les fichier uploades est stockes sont accessibles correctement.
+C'est pour que le site fonctionne directement sous la route /, au lieu de /management-concours par exemple.
+3. Verifier que la configuration de base de donnees est correcte, sous `config/db.php`
+4. C'est tout.
+
+Vous pouvez regarder un demo sur: https://vimeo.com/943360357/3f53e17f34
+
+EXPLANATION DE LA STRUCTURE DU PROJET:
+- BASE DE DONNEES
+    - Tous ce qui est relie au BD est sous `db/`, pour tout tableau on a une classe qui est
+    la responsable
+    - La configuration est sous `config/db.php`, c'est la configuration pour MAMP
+- AUTHENTICATION
+    - On a deux classes qui aident avec l'authentication
+        - `PasswordManager`: Responsable de securiser les mot de passes et de les verifier
+        - `EmailVerificationManager`: Responsable de generer la `token` et d'envoyer l'email de verification
+- FILE UPLOADER
+    - Classe responsable de stockers les fichier que l'utilisatuer va uploader
+
+- COMPONENTS
+    - `header_init.php`: Connecte a db et verifie le statut d'authentication qu'on stocke dans la session
+    - `header.php`: Inclus `header_init.php` et affiche la base de la page avec le header/menu
+    - `footer.php`: Affiche le footer et ferme les tags `body` et `html`
+
+- PUBLIC
+    - dossier contenant les fichiers non lies a php et a la backend du projets
